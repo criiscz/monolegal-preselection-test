@@ -1,0 +1,12 @@
+<div class="invoice-card">
+    <em class="nit">NIT: {{invoice.NIT}}</em>
+    <em class="codigo-factura">Factura N°: {{invoice.CodigoFactura}}</em>
+    <em class="factura-creacion">Fecha de creación: {{getCreationDate()}}</em>
+    <em class="factura-ciudad">Ciudad: {{invoice.Ciudad}}</em>
+    <em class="factura-estado">Estado: {{invoice.Estado}}</em>
+    <em class="factura-subtotal">SubTotal: {{invoice.SubTotal}}</em>
+    <em class="factura-iva">IVA: {{invoice.Iva}}</em>
+    <em class="factura-total">Total: {{invoice.TotalFactura}}</em>
+    <em class="factura-pagada" >Factura <strong>{{getInvoiceStatus()}}</strong></em>
+    <em class="factura-fecha-pago" *ngIf="invoice.Pagada">Fecha de pago: {{invoice.FechaPago}}</em>
+</div>
