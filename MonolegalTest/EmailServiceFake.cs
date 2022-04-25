@@ -5,7 +5,7 @@ namespace MonolegalTest;
 
 public class EmailServiceFake : IEmailService
 {
-    public void Notify(Invoice invoice)
+    public void Notify(Invoice invoice, string email)
     {
         // Do nothing
     }

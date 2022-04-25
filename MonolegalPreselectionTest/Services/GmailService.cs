@@ -38,7 +38,7 @@ public class GmailService : IEmailService
     }
 
     // Metodo para notificar via correo
-    public void Notify(Invoice invoice)
+    public void Notify(Invoice invoice, string emailClient)
     {
         if (invoice.State == "desactivada") return;
         var smtp = new SmtpClient
@@ -51,7 +51,7 @@ public class GmailService : IEmailService
             Credentials = new NetworkCredential(_from.Address, _password),
         };
 
-        var toAddress = new MailAddress(invoice.Email);
+        var toAddress = new MailAddress(emailClient);
         using var message = new MailMessage(_from, toAddress)
         {
             Subject = string.Format(_subject, invoice.InvoiceNumber),

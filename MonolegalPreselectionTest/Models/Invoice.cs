@@ -16,11 +16,6 @@ public class Invoice
     [JsonPropertyName("CodigoFactura")]
     public string InvoiceNumber { get; set; } = "";
 
-    // Nombre del cliente -- [Puede ser un objeto de tipo Cliente]
-    [BsonElement("Cliente")]
-    [JsonPropertyName("Cliente")]
-    public string Client { get; set; } = null!;
-
     // Ciudad de la factura
     [BsonElement("Ciudad")]
     [JsonPropertyName("Ciudad")]
@@ -71,11 +66,6 @@ public class Invoice
     [JsonPropertyName("FechaPago")]
     public DateTime? PaymentDate { get; set; } = null;
 
-    // Correo electronico del cliente
-    [BsonElement("Correo")]
-    [JsonPropertyName("Correo")]
-    public string Email { get; set; } = "";
-
     // Cambia el estado de la factura al siguiente estado.
     public string ChangeState()
     {
@@ -97,6 +87,6 @@ public class Invoice
     public override string ToString()
     {
         return
-            $"{InvoiceNumber} - {Client} - {InvoiceCity} - {Nit} - {InvoiceTotal} - {InvoiceSubTotal} - {Iva} - {Retention} - {CreationDate} - {State} - {IsPaid} - {PaymentDate} - {Email}";
+            $"{InvoiceNumber} - {InvoiceCity} - {Nit} - {InvoiceTotal} - {InvoiceSubTotal} - {Iva} - {Retention} - {CreationDate} - {State} - {IsPaid} - {PaymentDate} ";
     }
 }

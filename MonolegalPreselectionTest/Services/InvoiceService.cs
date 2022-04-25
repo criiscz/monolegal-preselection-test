@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using MonolegalPreselectionTest.Connection;
+using MonolegalPreselectionTest.Data;
 using MonolegalPreselectionTest.Models;
 
 namespace MonolegalPreselectionTest.Services;
@@ -11,13 +12,13 @@ public class InvoiceService : IInvoiceDataStore
 {
     private readonly IMongoClient _client;
     private readonly IMongoDatabase _database;
-    private readonly InvoiceDatabaseSettings _settings;
+    private readonly DatabaseSettings _settings;
 
     private readonly IMongoCollection<Invoice> _invoiceCollection;
 
     // Inyectamos las opciones de configuración de la base de datos
     // para obtener la colección de facturas
-    public InvoiceService(IOptions<InvoiceDatabaseSettings> settings, IMongoClient client,
+    public InvoiceService(IOptions<DatabaseSettings> settings, IMongoClient client,
     IMongoDatabase database ){
         _settings = settings.Value;
         _client = client;
@@ -26,7 +27,7 @@ public class InvoiceService : IInvoiceDataStore
     }
 
     // Obtiene todas las facturas de la base de datos.
-    public List<Invoice> GetAllInvoicesAsync() =>
+    public List<Invoice> GetAllInvoices() =>
         _invoiceCollection.Find(_ => true).ToListAsync().Result;
 
     // Actualiza el estado de una factura

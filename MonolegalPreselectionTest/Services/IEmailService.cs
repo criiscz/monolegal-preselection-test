@@ -4,5 +4,5 @@ namespace MonolegalPreselectionTest.Services;
 
 public interface IEmailService
 {
-    void Notify(Invoice invoice);
+    void Notify(Invoice invoice, string email);
 }

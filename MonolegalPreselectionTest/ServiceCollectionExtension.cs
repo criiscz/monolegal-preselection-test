@@ -9,11 +9,11 @@ public static class ServiceCollectionExtension
     public static IServiceCollection AddMongoDb(this IServiceCollection services,
         IConfiguration configuration)
     {
-        services.Configure<InvoiceDatabaseSettings>(configuration.GetSection("InvoiceDatabase"));
+        services.Configure<DatabaseSettings>(configuration.GetSection("InvoiceDatabase"));
         services.AddSingleton<IMongoClient>(_ =>
-            new MongoClient(configuration.GetSection("InvoiceDatabase").Get<InvoiceDatabaseSettings>().ConnectionString));
+            new MongoClient(configuration.GetSection("InvoiceDatabase").Get<DatabaseSettings>().ConnectionString));
         services.AddSingleton<IMongoDatabase>(provider =>
-            provider.GetService<IMongoClient>()!.GetDatabase(configuration.GetSection("InvoiceDatabase").Get<InvoiceDatabaseSettings>().DatabaseName));
+            provider.GetService<IMongoClient>()!.GetDatabase(configuration.GetSection("InvoiceDatabase").Get<DatabaseSettings>().DatabaseName));
         return services;
     }
 
