@@ -16,7 +16,7 @@ public class Invoice
     [JsonPropertyName("CodigoFactura")]
     public string InvoiceNumber { get; set; } = "";
 
-    // Nombre del cliente
+    // Nombre del cliente -- [Puede ser un objeto de tipo Cliente]
     [BsonElement("Cliente")]
     [JsonPropertyName("Cliente")]
     public string Client { get; set; } = null!;
@@ -79,13 +79,24 @@ public class Invoice
     // Cambia el estado de la factura al siguiente estado.
     public string ChangeState()
     {
-        State = State switch
+        State = GetNextState();
+        return State;
+    }
+
+    // Obtiene el siguiente estado de la factura.
+    public string GetNextState()
+    {
+        return State switch
         {
             "primerRecordatorio" => "segundoRecordatorio",
             "segundoRecordatorio" => "desactivada",
             _ => State
         };
+    }
 
-        return State;
+    public override string ToString()
+    {
+        return
+            $"{InvoiceNumber} - {Client} - {InvoiceCity} - {Nit} - {InvoiceTotal} - {InvoiceSubTotal} - {Iva} - {Retention} - {CreationDate} - {State} - {IsPaid} - {PaymentDate} - {Email}";
     }
 }

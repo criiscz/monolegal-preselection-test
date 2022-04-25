@@ -1,12 +1,14 @@
-<div class="invoice-card">
-    <em class="nit">NIT: {{invoice.NIT}}</em>
-    <em class="codigo-factura">Factura N°: {{invoice.CodigoFactura}}</em>
+<div class="invoice-card" [ngClass]="invoice.Pagada ? 'invoice-paid' : 'invoice-pending'">
+    <em class="nit fw-bold">NIT: {{invoice.NIT}}</em>
+    <em class="codigo-factura">Factura N°: <span class="fw-bold">{{invoice.CodigoFactura}}</span></em>
     <em class="factura-creacion">Fecha de creación: {{getCreationDate()}}</em>
     <em class="factura-ciudad">Ciudad: {{invoice.Ciudad}}</em>
-    <em class="factura-estado">Estado: {{invoice.Estado}}</em>
-    <em class="factura-subtotal">SubTotal: {{invoice.SubTotal}}</em>
-    <em class="factura-iva">IVA: {{invoice.Iva}}</em>
-    <em class="factura-total">Total: {{invoice.TotalFactura}}</em>
+    <em class="factura-cliente">Cliente: <span class="fw-bold">{{invoice.Cliente}}</span></em>
+    <em class="factura-estado">Estado: <span class="fw-bold">{{getInvoiceState()}}</span></em>
+    <em class="factura-subtotal">SubTotal: ${{invoice.SubTotal}}</em>
+    <em class="factura-iva">IVA: ${{invoice.Iva}}</em>
+    <em class="factura-retencion">Retención: ${{invoice.Retencion}}</em>
+    <em class="factura-total">Total: ${{invoice.TotalFactura}}</em>
     <em class="factura-pagada" >Factura <strong>{{getInvoiceStatus()}}</strong></em>
-    <em class="factura-fecha-pago" *ngIf="invoice.Pagada">Fecha de pago: {{invoice.FechaPago}}</em>
+    <em class="factura-fecha-pago" *ngIf="invoice.Pagada">Fecha de pago: {{getPaidDate()}}</em>
 </div>

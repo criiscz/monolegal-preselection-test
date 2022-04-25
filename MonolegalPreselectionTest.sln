@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32414.318
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonolegalPreselectionTest", "MonolegalPreselectionTest\MonolegalPreselectionTest.csproj", "{1D3FC5F4-D613-4577-B3C5-5160423B6568}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MonolegalPreselectionTest", "MonolegalPreselectionTest\MonolegalPreselectionTest.csproj", "{1D3FC5F4-D613-4577-B3C5-5160423B6568}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonolegalTest", "MonolegalTest\MonolegalTest.csproj", "{B74AC4F6-E8ED-4600-A6CC-FA357E1A2012}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{1D3FC5F4-D613-4577-B3C5-5160423B6568}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1D3FC5F4-D613-4577-B3C5-5160423B6568}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1D3FC5F4-D613-4577-B3C5-5160423B6568}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B74AC4F6-E8ED-4600-A6CC-FA357E1A2012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B74AC4F6-E8ED-4600-A6CC-FA357E1A2012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B74AC4F6-E8ED-4600-A6CC-FA357E1A2012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B74AC4F6-E8ED-4600-A6CC-FA357E1A2012}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

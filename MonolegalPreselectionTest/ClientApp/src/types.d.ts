@@ -7,7 +7,7 @@ type Invoice = {
   Iva: number;
   Correo: string;
   Pagada: boolean;
-  FechaPago: string | null;
+  FechaPago: string;
   Estado: string;
   Retencion: number;
   Ciudad: string;

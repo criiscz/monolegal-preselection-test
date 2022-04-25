@@ -7,8 +7,6 @@ const PROXY_CONFIG = [
   {
     context: [
       "/api/invoice",
-      "/update",
-      "/api/update"
    ],
     target: target,
     secure: false,

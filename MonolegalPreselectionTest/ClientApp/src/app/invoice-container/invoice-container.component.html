@@ -1,46 +1,21 @@
-<h1 id="tableLabel">Weather forecast</h1>
+<div class="container">
+    <div class="header">
+            <h1>Facturas</h1>
+            <button class="btn btn-primary" (click)="updateInvoices()">Actualizar Facturas</button>
+    </div>
 
-<p *ngIf="!invoices"><em>Loading...</em></p>
+    <p *ngIf="!invoices"><em>Loading...</em></p>
 
-<div *ngIf="invoices">
-    <div *ngFor="let invoice of invoices">
-        <invoice-card [invoice]="invoice"></invoice-card>
+    <div class="toast" role="alert" aria-live="assertive"
+         aria-atomic="true">
+        <div class="toast-header">
+            <strong class="me-auto text-invoice">Facturas Actualizadas</strong>
+        </div>
+    </div>
+
+    <div *ngIf="invoices" class="cards">
+        <div *ngFor="let invoice of invoices">
+            <invoice-card [invoice]="invoice"></invoice-card>
+        </div>
     </div>
 </div>
-
-<!--<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="forecasts">-->
-<!--  <thead>-->
-<!--    <tr>-->
-<!--      <th>Codigo de factura</th>-->
-<!--      <th>Cliente</th>-->
-<!--      <th>Fecha de Creacion</th>-->
-<!--      <th>Total Factura</th>-->
-<!--      <th>SubTotal</th>-->
-<!--      <th>Iva</th>-->
-<!--      <th>Correo</th>-->
-<!--      <th>Pagada</th>-->
-<!--      <th>Fecha de Pago</th>-->
-<!--      <th>Estado</th>-->
-<!--      <th>Retencion</th>-->
-<!--      <th>Ciudad</th>-->
-<!--      <th>NIT</th>-->
-<!--    </tr>-->
-<!--  </thead>-->
-<!--  <tbody>-->
-<!--    <tr *ngFor="let forecast of forecasts">-->
-<!--      <td>{{ forecast.CodigoFactura }}</td>-->
-<!--      <td>{{ forecast.Cliente }}</td>-->
-<!--      <td>{{ forecast.FechaCreacion }}</td>-->
-<!--      <td>{{ forecast.TotalFactura }}</td>-->
-<!--      <td>{{ forecast.SubTotal }}</td>-->
-<!--      <td>{{ forecast.Iva }}</td>-->
-<!--      <td>{{ forecast.Correo }}</td>-->
-<!--      <td>{{ forecast.Pagada }}</td>-->
-<!--      <td>{{ forecast.FechaPago }}</td>-->
-<!--      <td>{{ forecast.Estado }}</td>-->
-<!--      <td>{{ forecast.Retencion }}</td>-->
-<!--      <td>{{ forecast.Ciudad }}</td>-->
-<!--      <td>{{ forecast.NIT }}</td>-->
-<!--    </tr>-->
-<!--  </tbody>-->
-<!--</table>-->

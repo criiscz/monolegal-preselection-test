@@ -9,12 +9,33 @@ namespace MonolegalPreselectionTest.Controllers;
 public class InvoiceController : ControllerBase
 {
     // Inyeccion de dependencias para el servicio de facturas
-    private readonly InvoiceService _invoiceService;
+    private readonly IInvoiceDataStore _invoiceService;
+
+    // Inyeccion de dependencias para el servicio de correos
+    private readonly IEmailService _emailService;
 
     // Constructor de la clase para inyectar el servicio de facturas
-    public InvoiceController(InvoiceService invoiceService) => _invoiceService = invoiceService;
+    public InvoiceController(IInvoiceDataStore invoiceService, IEmailService emailService)
+    {
+        _invoiceService = invoiceService;
+        _emailService = emailService;
+    }
 
     // GET: api/Invoice - Obtiene todas las facturas del servicio
     [HttpGet]
-    public async Task<List<Invoice>> Get() => await _invoiceService.Get();
+    public IActionResult GetAllInvoices() => Ok(_invoiceService.GetAllInvoicesAsync());
+
+    // POST api/Invoice/update - Actualiza el estado de las facturas y envia un correo con el resultado
+    [HttpPost("update")]
+    public IActionResult UpdateInvoice()
+    {
+        var list = _invoiceService.GetAllInvoicesAsync();
+        foreach (var invoice in list)
+        {
+            _emailService.Notify(invoice);
+            _invoiceService.UpdateState(invoice.InvoiceNumber, invoice
+                .ChangeState());
+        }
+        return Ok(list);
+    }
 }

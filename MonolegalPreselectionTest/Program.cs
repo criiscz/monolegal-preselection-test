@@ -1,28 +1,27 @@
+using MongoDB.Driver;
+using MonolegalPreselectionTest;
 using MonolegalPreselectionTest.Connection;
 using MonolegalPreselectionTest.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.Configure<InvoiceDatabaseSettings>(
-    builder.Configuration.GetSection("InvoiceDatabase")
-);
-builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
-
-builder.Services.AddSingleton<InvoiceService>();
-
-builder.Services.AddSingleton<EmailService>();
+// MongoDb initialization
+// Email initialization
+builder.Services.AddMongoDb(builder.Configuration);
+builder.Services.AddEmailService(builder.Configuration);
 
 builder.Services.AddControllersWithViews().AddJsonOptions(
     options => options.JsonSerializerOptions.PropertyNamingPolicy = null
 );
-
+// builder.Services.AddSingleton<InvoiceService>();
+builder.Services.AddTransient<IInvoiceDataStore, InvoiceService>();
 var app = builder.Build();
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseHsts();
 }
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
